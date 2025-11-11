@@ -5,61 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>De Extinção – Projeto Científico</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: url('https://images.unsplash.com/photo-1606577924000-8bdb6f0bb1e4?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
-      color: white;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('https://images.unsplash.com/photo-1508261303786-0a0a8699a6d2?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: #f5f5f5;
       text-align: center;
-      backdrop-filter: blur(4px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 20px;
     }
-    header {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px 0;
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #6df7a7;
+      text-shadow: 0 0 10px #000;
     }
-    h1 {
-      font-size: 2.5em;
-      margin: 0;
-      letter-spacing: 2px;
+
+    header h3 {
+      font-weight: 400;
+      font-size: 1.3em;
+      opacity: 0.9;
     }
+
     p {
       max-width: 700px;
-      margin: 20px auto;
-      font-size: 1.2em;
-      line-height: 1.5em;
-      color: #f5f5f5;
+      margin: 25px auto;
+      font-size: 1.1em;
+      line-height: 1.6em;
+      opacity: 0.95;
     }
+
     .btn {
       display: inline-block;
       background: #3fb950;
       color: white;
       text-decoration: none;
-      padding: 15px 35px;
+      padding: 14px 38px;
       font-size: 1.1em;
-      border-radius: 8px;
-      margin-top: 25px;
-      transition: 0.3s;
+      border-radius: 12px;
+      margin-top: 20px;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s, background 0.3s;
     }
+
     .btn:hover {
       background: #2e8c3a;
+      transform: scale(1.05);
     }
+
     footer {
-      margin-top: 60px;
+      margin-top: 50px;
       font-size: 0.9em;
       opacity: 0.8;
+    }
+
+    footer a {
+      color: #6df7a7;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>🦖 De Extinção</h1>
+    <h1>🧬 De Extinção</h1>
     <h3>Trazendo espécies de volta à vida</h3>
   </header>
 
   <main>
     <p>
-      Um projeto científico que explora o poder da biotecnologia e da genética para reviver espécies extintas.
-      Descubra as ideias, teorias e desafios por trás dessa pesquisa fascinante.
+      Um projeto científico inovador que explora os limites da biotecnologia para reviver espécies extintas.  
+      Descubra os bastidores de um estudo que mistura ciência, ética e imaginação.
     </p>
 
     <p><strong>💰 Valor: R$ 6,00</strong></p>
@@ -68,7 +95,7 @@
 
     <footer>
       <p>Mais de <strong>1200</strong> pessoas já demonstraram interesse neste projeto.</p>
-      <p>Contato: <a href="mailto:leo635777@gmail.com" style="color: #3fb950;">leo635777@gmail.com</a></p>
+      <p>Contato: <a href="mailto:leo635777@gmail.com">leo635777@gmail.com</a></p>
     </footer>
   </main>
 </body>
