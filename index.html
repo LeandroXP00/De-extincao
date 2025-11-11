@@ -5,9 +5,211 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projeto De-extinção — Revivendo o Passado</title>
   <meta name="description" content="Projeto De-extinção: biotecnologia e ciência unidas para restaurar espécies extintas. Saiba mais e participe." />
+  <style>
+    :root{
+      --bg:#071019;
+      --card:#0f1720;
+      --accent: #00d1ff;
+      --accent2: #4bffa6;
+      --glass: rgba(255,255,255,0.04);
+      --muted: rgba(255,255,255,0.75);
+      --maxw:1100px;
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:#e6eef6}
+    a{color:var(--accent);text-decoration:none}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:var(--maxw);margin:0 auto}
+    .logo{display:flex;gap:12px;align-items:center;font-weight:700}
+    .logo .dot{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#021219;font-weight:800}
+    nav{display:flex;gap:12px;align-items:center}
+    nav button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer}
+    nav button.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#021219;border:none}
+
+    .hero{min-height:64vh;display:flex;align-items:center;justify-content:center;padding:40px 16px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(7,16,25,0.72),rgba(7,16,25,0.9)), url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1600&q=60');background-size:cover;background-position:center;filter:contrast(90%) saturate(110%);opacity:0.98}
+    .hero-inner{position:relative;z-index:2;max-width:var(--maxw);width:100%;display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);padding:26px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,10,0.6)}
+    h1{font-size:clamp(26px,4vw,44px);margin:0 0 10px}
+    p.lead{margin:0 0 18px;color:var(--muted);line-height:1.5}
+    .ctas{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#021219;border:none}
+    .stats{display:flex;gap:18px;margin-top:14px}
+    .stat{background:var(--glass);padding:10px 14px;border-radius:12px}
+    .stat b{display:block;font-size:18px}
+    .stat span{font-size:12px;color:var(--muted)}
+
+    .card-right{padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);}
+    .price{font-size:22px;font-weight:700;margin-bottom:8px}
+    .buy{display:flex;gap:8px}
+    .buy input{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+
+    main{max-width:var(--maxw);margin:28px auto;padding:0 18px}
+    section{margin:28px 0;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));}
+    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+    h2{margin:0 0 10px}
+    ul{margin:12px 0 0;padding-left:18px;color:var(--muted)}
+    footer{max-width:var(--maxw);margin:28px auto;padding:24px 18px;border-radius:12px;color:var(--muted);font-size:14px}
+
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:1fr;}
+      .grid-2{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    .fade-in{opacity:0;transform:translateY(8px);animation:fadeUp .8s forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* CTA destaque */
+    .buy-cta{display:flex;gap:8px;margin-top:12px}
+    .buy-cta .price-tag{background:linear-gradient(90deg,var(--accent),var(--accent2));padding:10px 14px;border-radius:12px;color:#021219;font-weight:700}
+    .buy-cta .buy-btn{padding:10px 14px;border-radius:12px;background:transparent;border:1px solid rgba(255,255,255,0.06);cursor:pointer;color:var(--muted)}
+    .buy-cta .buy-btn.primary{background:transparent; border:none; background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#021219}
+  </style>
 </head>
 <body>
-  <h1>Projeto De-extinção — Revivendo o Passado</h1>
-  <p>O Projeto De-extinção combina biotecnologia, engenharia genética e pesquisa científica para restaurar espécies extintas e reequilibrar ecossistemas. Mais de 1.200 interessados já participam!</p>
+  <header>
+    <div class="logo">
+      <div class="dot">D</div>
+      <div>
+        Projeto <strong>De-extinção</strong>
+        <div style="font-size:12px;color:var(--muted)">Revivendo o passado com ciência</div>
+      </div>
+    </div>
+    <nav>
+      <button onclick="scrollToSection('about')">Sobre</button>
+      <button onclick="scrollToSection('price')">Ver preço</button>
+      <button onclick="scrollToSection('saiba')">Saiba mais</button>
+      <button class="primary" onclick="scrollToSection('sales')">Vendas realizadas</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-card fade-in">
+        <h1>Reviva espécies perdidas. Ciência encontra responsabilidade.</h1>
+        <p class="lead">O <strong>Projeto De-extinção</strong> combina biotecnologia, engenharia genética e pesquisa multidisciplinar para restaurar espécies extintas e reencontrar o equilíbrio dos ecossistemas. Uma iniciativa séria, com visão científica e compromisso ético.</p>
+        <div class="ctas">
+          <button class="btn primary" onclick="scrollToSection('price')">Ver preço do produto</button>
+          <button class="btn" onclick="scrollToSection('saiba')">Saiba mais</button>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <b id="counter">+1.200</b>
+            <span>Interessados até agora</span>
+          </div>
+          <div class="stat">
+            <b>R$ 6,00</b>
+            <span>Valor sugerido</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card-right fade-in">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:12px;color:var(--muted)">Produto</div>
+            <div class="price">Projeto De-extinção — Demonstração</div>
+          </div>
+          <div style="text-align:right;color:var(--muted)">Disponível agora</div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <!-- Formulário simples / captura de e-mail -->
+        <div class="buy">
+          <input id="email" placeholder="Seu e-mail para interesse" />
+          <button class="btn primary" onclick="registerInterest()">Quero</button>
+        </div>
+
+        <!-- CTA de compra rápida -->
+        <div class="buy-cta">
+          <div class="price-tag">R$ 6,00</div>
+          <!-- abre o cliente de e-mail com assunto e corpo pré-preenchidos -->
+          <a class="buy-btn primary" id="buyMail" href="mailto:leo635777@gmail.com?subject=Compra%20-%20Projeto%20De-extincao%20-%20R%24%206,00&body=Olá%2C%0A%0AQuero%20efetuar%20a%20compra%20do%20Projeto%20De-extinção%20por%20R%24%206%2C00.%20Por%20favor%2C%20me%20informe%20os%20próximos%20passos.%0A%0ANome%3A%0AEmail%3A%0A%0AObrigado.">Comprar por R$ 6,00</a>
+        </div>
+
+        <div style="font-size:12px;color:var(--muted);margin-top:10px">
+          Entre em contato: <a href="mailto:leo635777@gmail.com">leo635777@gmail.com</a>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px">Receba atualizações e prioridade em pré-venda. Não vamos spammar — prometo.</div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="about" class="fade-in">
+      <h2>Sobre o projeto</h2>
+      <p style="color:var(--muted)">A <strong>De-extinção</strong> é um projeto revolucionário que utiliza avanços em biotecnologia, engenharia genética e clonagem para trazer de volta espécies extintas quando isso for cientificamente e eticamente viável. Nossa abordagem prioriza pesquisa rigorosa, auditoria externa e práticas que respeitam o equilíbrio ecológico e a conservação atual.</p>
+    </section>
+
+    <section id="saiba" class="fade-in">
+      <div class="grid-2">
+        <div>
+          <h2>Saiba mais</h2>
+          <p style="color:var(--muted)">O projeto aborda:</p>
+          <ul>
+            <li>Sequenciamento genético e reconstrução de genomas com dados fósseis e espécies remanescentes.</li>
+            <li>Clonagem e edição genética com protocolos de segurança e revisão ética.</li>
+            <li>Reintrodução controlada em ambientes preparados e monitoramento a longo prazo.</li>
+            <li>Parcerias com universidades, institutos de pesquisa e organizações ambientais.</li>
+          </ul>
+        </div>
+        <aside style="padding:18px;background:var(--card);border-radius:12px">
+          <h3 style="margin:0 0 8px">Impacto e responsabilidade</h3>
+          <p style="color:var(--muted);margin:0 0 10px">Entendemos que a ciência precisa andar junto da ética. Antes de qualquer reintrodução, o projeto avalia riscos ecológicos, impactos na biodiversidade atual e recebe pareceres independentes.</p>
+          <div style="font-size:13px;color:var(--muted)">Quer saber o passo a passo do nosso pipeline científico? <a href="#">Clique aqui para o whitepaper</a>.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="price" class="fade-in">
+      <h2>Ver preço do produto</h2>
+      <p style="color:var(--muted)">Oferecemos pacotes de apoio institucional, kits educacionais e acesso prioritário a relatórios de pesquisa. Preços e condições são negociados conforme o pacote — entre em contato para cotação personalizada.</p>
+      <div style="margin-top:12px">
+        <button class="btn primary" onclick="contact()">Solicitar cotação</button>
+      </div>
+    </section>
+
+    <section id="sales" class="fade-in">
+      <h2>Vendas e interessados</h2>
+      <p style="color:var(--muted)">Mais de <strong>1.200 interessados</strong> já se registraram para receber atualizações e condições de pré-venda. Esse número representa entidades, institutos e indivíduos curiosos em acompanhar a evolução do projeto.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div style="max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>© <strong>Projeto De-extinção</strong> — 2025</div>
+      <div style="color:var(--muted)">Contato: <a href="mailto:leo635777@gmail.com">leo635777@gmail.com</a></div>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(!el) return window.scrollTo({top:0,behavior:'smooth'});
+      el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function registerInterest(){
+      const email = document.getElementById('email').value.trim();
+      if(!email || !email.includes('@')){
+        alert('Coloque um e-mail válido para receber atualizações.');
+        return;
+      }
+      alert('Obrigado! Vamos enviar novidades para: ' + email);
+      document.getElementById('email').value='';
+    }
+    function contact(){
+      // abre o cliente de e-mail para contato rápido
+      window.location.href = 'mailto:leo635777@gmail.com?subject=Contato%20-%20Projeto%20De-extincao';
+    }
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.fade-in').forEach((el,i)=>{
+        el.style.animationDelay = (i*120)+'ms';
+      });
+    });
+  </script>
 </body>
 </html>
